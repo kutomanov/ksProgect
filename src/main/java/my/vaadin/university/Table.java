@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Collection;
 
+
 public class Table {
 	
 	public static void main(String[] args) throws Exception {
@@ -47,9 +48,9 @@ public class Table {
 		
 	}*/
 	
-	public static Collection<String> getAllStudents() throws Exception {
+	public static Collection<Student> getAllStudents() {
 		
-		Collection<String> array = new ArrayList<String>();
+		Collection<Student> array = new ArrayList<Student>();
 		
 		try {
 			
@@ -59,26 +60,33 @@ public class Table {
 			
 			
 			while (result.next()) {
-				array.add(result.getString("lastname"));
+				Student st = new Student();
+				st.setlastname(result.getString("lastname"));
+				st.setlastname(result.getString("firstname"));
+				st.setlastname(result.getString("patronymic"));
+				st.setlastname(result.getString("birthday"));
+				st.setlastname(result.getString("grup"));
+				
+				array.add(st);
+								
+				/*array.add(result.getString("lastname"));
 				array.add(result.getString("firstname"));
 				array.add(result.getString("patronymic"));
 				array.add(result.getString("birthday"));
-				array.add(result.getString("grup"));
+				array.add(result.getString("grup"));*/
 				
 				System.out.println(array);
-				
 				}
+				
 			
 			System.out.println("Все данные выбраны!");
-			return array;
+			
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return null;
+		return array;
 		
 	}
-	
-	
 	
 }
 
