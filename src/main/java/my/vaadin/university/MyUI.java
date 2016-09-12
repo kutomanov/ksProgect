@@ -17,9 +17,7 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 	
-	Collection<String> array = new ArrayList<String>();
-	BeanItemContainer<Student> container = new BeanItemContainer<Student>(Table.class, array);
-	Grid grid = new Grid(container);
+	Grid grid = new Grid();
 	
 	
     @Override
@@ -28,9 +26,6 @@ public class MyUI extends UI {
     	VerticalLayout layout = new VerticalLayout();
     	
     	layout.addComponent(grid);
-    	
-    	grid.setContainerDataSource(new BeanItemContainer<>(Table.class, array));
-    	
     	
     	setContent(grid);
     	    	
