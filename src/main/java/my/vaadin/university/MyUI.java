@@ -1,8 +1,5 @@
 package my.vaadin.university;
 
-import java.util.ArrayList;
-import java.util.Collection;
-
 import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -17,18 +14,23 @@ import com.vaadin.ui.VerticalLayout;
 @Theme("mytheme")
 public class MyUI extends UI {
 	
-	Grid grid = new Grid();
+	
 	
 	
     @Override
     protected void init(VaadinRequest vaadinRequest) {
       
     	VerticalLayout layout = new VerticalLayout();
-    	
+    	Grid grid = new Grid();
     	layout.addComponent(grid);
     	
-    	setContent(grid);
-    	    	
+    	BeanItemContainer<Student> container = new BeanItemContainer<Student>(Student.class);
+    	container.addAll(Table.getAllStudents());
+    	//System.out.println(container);
+    	
+    	grid.setContainerDataSource(container);
+    	
+     	
     	layout.setSpacing(true);
     	layout.setMargin(true);
     	setContent(layout);    	   	
